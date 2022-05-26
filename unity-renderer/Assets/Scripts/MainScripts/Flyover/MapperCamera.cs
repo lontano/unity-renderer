@@ -16,8 +16,7 @@ public class MapperCamera : MonoBehaviour
     public Vector2Int RenderSize = new Vector2Int(1024, 1024);
     public string SessionNameBase = "Render_";
     public string RenderOutputPath = @"D:\Lukas\Renders\";
-    public string SnaptshotTargetPath = @"D:\Lukas\Snapshots\";
-    public bool OverWriteFiles = true;
+    public bool OverwriteFiles = true;
     [Header("Time outs")]
     public float ScreenShotTimeOut = 5f;
     public float GotoNextParcelTimeOut = 2f;
@@ -322,7 +321,7 @@ public class MapperCamera : MonoBehaviour
     {
         string outputFilePath = System.IO.Path.Combine(RenderOutputPath, $"{this.currentX.ToString("0")},{this.currentY.ToString("0")}");
 
-        if (!OverWriteFiles) //we dont want to overwrite files: we try to get the first available file name
+        if (!OverwriteFiles) //we dont want to overwrite files: we try to get the first available file name
         {
             int count = 0;
             while (System.IO.File.Exists(outputFilePath + ".png"))
