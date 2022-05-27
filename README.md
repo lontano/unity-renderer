@@ -1,3 +1,41 @@
+# Decentraland Unity Renderer Camera Mapper Fork
+
+This repository contains a fork of the Unity part of [decentraland explorer](https://play.decentraland.org). This component works alongside Kernel to produce an Explorer build.
+
+In addition to the normal functionality, the MapperCamera.cs script allows the user to create a map composed of top-view images of the entire area. A custom editor MapperCameraEditor.cs controls the underlying script.
+
+## Camera Mapper script
+
+The script must be attached to a Camera gameObject in the root of the scene. The inspector will show this controls:
+
+| Section | Description |
+| ---------- | ---------- |
+| X Position | Position of the current parcel |
+| Y Position | Position of the current parcel |
+| Side Camera | Switches between top and side camera |
+| Start/Stop process (button) | Controls the automated process |
+| Take snapshot | Stores the current parcel to disk |
+| Scene ||
+| Target | Character controller, will be used to update the navigation map|
+| Avatar Renderer | GameObject containing the character's mesh, so it can be deactivated |
+| Parcel Size | Size of a parcel in Unity units|
+| Render | |
+| Camera | The camera used for the render. If no camera is provided, the camera attached to the GameObject contaning the script is used or, if none is present, a camera is created |
+| Render texture | The render texture to render the camera output to. If no texture is provided, or its dimensions don't match the selected ones, a new render textures is created |
+| Render size | Size in pixels of the rendered images |
+| Session Base Name | Name of the rendering session, used as the name of the folder to store the images |
+| Render Output Path | Base path for the rendering sessions |
+| Overwrite files  | Controls if the process will skip already existing files or will overwrite them |
+| Time outs ||
+| Screen Shot Minimum Time Offset | Minimum time between screen shots | 
+| Goto Next Parcel Minimum Time Offset | Minimum time between parcel navigation orders |
+| Topology ||
+| N | Scaled size of the parcels. Must be 1|
+| Flying Height | Height of the camera |
+| Orhographic camera scale | Size of the orthographic camera. A size of 1 will take images of exactly 1 parcel|
+| Size camera scale | Size of the side camera|
+
+
 # Decentraland Unity Renderer
 
 This repository contains the Unity part of [decentraland explorer](https://play.decentraland.org). This component works alongside Kernel to produce an Explorer build.

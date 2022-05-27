@@ -18,11 +18,12 @@ public class MapperCamera : MonoBehaviour
     public string RenderOutputPath = @"D:\Lukas\Renders\";
     public bool OverwriteFiles = true;
     [Header("Time outs")]
-    public float ScreenShotTimeOut = 5f;
-    public float GotoNextParcelTimeOut = 2f;
+    public float ScreenShotMinimumTimeOffset = 5f;
+    public float GotoNextParcelMinimumTimeOffset = 2f;
     [Header("Topology")]
     public int N = 1;
     public float flyingHeight = 10f;
+    [HideInInspector]
     public bool SideCamera = false;
     public float OthographicCameraScale = 1.0f;
     public float SideCameraScale = 1.0f;
@@ -135,7 +136,7 @@ public class MapperCamera : MonoBehaviour
         if (this.Started)
         {
             waitStartTime = Time.time;
-            Invoke("WaitForScreenshot", this.ScreenShotTimeOut);
+            Invoke("WaitForScreenshot", this.ScreenShotMinimumTimeOffset);
         }
     }
 
@@ -244,7 +245,7 @@ public class MapperCamera : MonoBehaviour
         else
         {
             Debug.Log("waiting for screenshot at (" + currentX * N + "," + currentY * N + ") for " + waitedTime + " seconds");
-            Invoke("WaitForScreenshot", this.ScreenShotTimeOut);
+            Invoke("WaitForScreenshot", this.ScreenShotMinimumTimeOffset);
         }
     }
 
@@ -294,7 +295,7 @@ public class MapperCamera : MonoBehaviour
         {
             if (System.IO.File.Exists(outputFilePath + ".png"))
             {
-                Invoke("GoToNextParcel", this.GotoNextParcelTimeOut);
+                Invoke("GoToNextParcel", this.GotoNextParcelMinimumTimeOffset);
             }
             else
             {
